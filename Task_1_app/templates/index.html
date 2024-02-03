@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image ROI Outline Detector</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #add8e6; /* Light Blue Background Color */
+            text-align: center;
+            margin: 50px;
+            background-image: url('/static/background.jpg'); /* Update the path to your downloaded image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            color: white; /* Text color changed to white */
+            font-size: 36px; /* Increased font size */
+        }
+
+        h2 {
+            font-size: 24px; /* Increased font size */
+            color: white; /* Text color changed to white */
+        }
+        h3 {
+            color: white; /* Text color changed to white */
+            font-size: 18px; /* Increased font size */
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px; /* Increased font size */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Image ROI Outline Detector</h1>
+    <form action="/process_image" method="post" enctype="multipart/form-data">
+        <label for="file"><h3>Choose an image:</h3></label>
+        <input type="file" name="file" id="file" accept=".jpg, .jpeg, .png" required>
+        <button type="submit">Process Image</button>
+    </form>
+    {% if processed_image %}
+    <h2>Processed Image:</h2>
+    <img src="data:image/png;base64,{{ processed_image }}" alt="Processed Image">
+    {% endif %}
+</body>
+
+</html>
